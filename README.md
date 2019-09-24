@@ -1,3 +1,5 @@
+Tweaked the Silkscreen on the PCB and used Roman Numerals (in kicad).
+
 ![Watch rendering](watch.png)
 
 "Analog" watch with 60+12 Charlieplexed LEDs. Based on Travis Goodspeed's
