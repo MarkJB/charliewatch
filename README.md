@@ -1,4 +1,5 @@
 Tweaked the Silkscreen on the PCB and used Roman Numerals (in kicad).
+![Modified PCB rendering](pcb/charliewatch_black_roman_numerals.png | width=400)
 
 ![Watch rendering](watch.png)
 
