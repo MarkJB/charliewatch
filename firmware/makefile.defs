@@ -1,0 +1,26 @@
+# This file allows us to use TIs Code Composer Studio and add dynamic variables (e.g. the time) to the CCS managed makefile.
+
+# I've not tested this with the original makefile so it could cause problems there.
+# Works and tested on Windows 10 with CCS 9.3 and the GNU (Mito Systems) compiler.
+
+# These are the commands from the orginal makefile and their respective output 
+#BUILDTIME := $(shell date "+%y,%m,1%d-100,1%H-100,1%M-100,1%S-100")
+#19,12,129-100,112-100,148-100,137-100
+#BUILDSEC := $(shell date "+%s"s)
+#1577624048s
+
+# Note: appending s to the timestamp in BUILDSEC results in an 'invalid identifier' error on Windows so not including in the Python.
+
+ifeq ($(SHELL), cmd.exe)
+BUILD_TIME := $(shell python -c "from datetime import datetime; print(datetime.utcnow().strftime('%y,%m,1%d-100,1%H-100,1%M-100,1%S-100'))")
+BUILD_SEC := $(shell python -c "import time; print(str(int(time.time())))")
+else
+BUILD_TIME := $(shell date -u +"+%y,%m,1%d-100,1%H-100,1%M-100,1%S-100")
+BUILD_SEC := $(shell date -u +"%s"s)
+endif 
+
+$(info Build Time: $(BUILD_TIME))
+$(info Build Sec: $(BUILD_SEC))
+
+GEN_OPTS__FLAG += -DBUILDTIME=$(BUILD_TIME) \
+               -DBUILDSEC=$(BUILD_SEC)
