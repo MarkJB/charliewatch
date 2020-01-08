@@ -2,8 +2,6 @@ Tweaked the Silkscreen on the PCB and used Roman Numerals (in kicad).
 
 ![Modified PCB rendering](pcb/charliewatch_black_roman_numerals.png){:height="50%" width="50%"}
 
-![Watch rendering](watch.png)
-
 "Analog" watch with 60+12 Charlieplexed LEDs. Based on Travis Goodspeed's
 GoodWatch21 schematic, using the CC430F5137IRGZR CPU, which doesn't
 have the LCD controller of the CC430F6xxx in the GoodWatch. There are
@@ -14,32 +12,24 @@ serial communication.
 v0.2 works, although it has no radio parts.  It is exactly 1 square inch
 of PCB and should fit in a 38mm or 36mm case.
 
-
-![v0.1 board](images/v0.1.jpg)
-v0.1 works, although the radio parts have not been tested.  It is a slightly
-larger board and fits in a 40mm case.
-
 [Charliewtch schematic](datasheets/charliewatch.pdf)
 
+Programming
+---
+
+Programmed via TI Code Composer Studio using the Programmer/Debugger on the MSP430 FR4133 Launchpad.
+http://www.ti.com/tool/MSP-EXP430FR4133
+
 Programming cable
------
+---
 
-From the top of the v0.1 board:
-* RST / TDIO
-* RXD on programmer
-* TXD on programmer
-* VCC
-* TST / TCK
-* GND
-
-v0.2:
-* greem
-* white
-* blue
-* purple
-* gray
-* black
-
+From the top of the board: (Wiring from watch to Programmer/Debugger on MSP430 FR4133 Launchpad) 
+* TST - SBWTCK
+* RST - SBWTDIO
+* RX - RXD
+* TX - TXD
+* VCC - 3V3
+* GND - GND
 
 There is also a four-wire setup that might simplify the wiring.
 Travis documents it and the power consumption here:
