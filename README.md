@@ -1,8 +1,9 @@
-"Analog" watch with 60+12 Charlieplexed LEDs. Based on Travis Goodspeed's
-GoodWatch21 schematic, using the CC430F5137IRGZR CPU, which doesn't
-have the LCD controller of the CC430F6xxx in the GoodWatch. There are
-also pads for a six pin EZfet cable with pogopins for programming or
-serial communication.
+Charliewatch
+---
+
+An "Analog" watch with 72 (60+12) Charlieplexed LEDs. Based on Travis Goodspeed's
+GoodWatch21 schematic, using the CC430F5137IRGZR CPU, which doesn't have the LCD
+controller of the CC430F6xxx in the GoodWatch.
 
 ![Modified v0.2 board with Roman Numerals](images/v0.2a.jpg)
 v0.2 works, although it has no radio parts.  It is exactly 1 square inch
