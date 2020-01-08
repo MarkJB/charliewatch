@@ -1,7 +1,3 @@
-Tweaked the Silkscreen on the PCB and used Roman Numerals (in kicad).
-
-![Modified PCB rendering](pcb/charliewatch_black_roman_numerals.png)
-
 "Analog" watch with 60+12 Charlieplexed LEDs. Based on Travis Goodspeed's
 GoodWatch21 schematic, using the CC430F5137IRGZR CPU, which doesn't
 have the LCD controller of the CC430F6xxx in the GoodWatch. There are
