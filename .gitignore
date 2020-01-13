@@ -7,9 +7,15 @@ pcb/routed.sch
 *.o
 *.elf
 *.hex
-.*.swp
-*.stl
 pcb/charliewatch/fp-info-cache
 pcb/fp-info-cache
 pcb/sym-lib-table
 pcb/empty.kicad_wks
+firmware/.ccsproject
+firmware/.cproject
+firmware/.project
+*.prefs
+firmware/cc430f5137.ld
+firmware/targetConfigs/CC430F5137.ccxml
+firmware/targetConfigs/readme.txt
+firmware/.launches/*.launch
