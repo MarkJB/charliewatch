@@ -11,6 +11,20 @@ of PCB and should fit in a 38mm or 36mm case.
 
 [Charliewtch schematic](datasheets/charliewatch.pdf)
 
+Bill Of Materials (BOM)
+---
+- CC430F5137IRGZR [https://www.mouser.co.uk/ProductDetail/595-CC430F5137IRGZR](https://www.mouser.co.uk/ProductDetail/595-CC430F5137IRGZR)
+
+- 0603 68k Resistor [ERA3AEB683V](https://uk.farnell.com/panasonic/era3aeb683v/res-68k-0-1-0-1w-0603-thin-film/dp/1577630)
+
+- 0603 Red LED [KP-1608EC](https://uk.farnell.com/kingbright/kp-1608ec/led-red-8mcd-625nm-smd/dp/2463988)
+
+- KEYSTONE  3002  Battery Contact, Coin Cell - 20mm, SMD [3002](https://uk.farnell.com/keystone/3002/battery-smd-retainer-20mm/dp/1650693)
+
+- IQD FREQUENCY PRODUCTS  LFXTAL050789  Crystal, 32.768 kHz, SMD, 2mm x 1.2mm, 12.5 pF, 20 ppm, IQXC-25 Series [LFXTAL050789](https://uk.farnell.com/iqd-frequency-products/lfxtal050789/crystal-32-768khz-12-5pf-smd/dp/2449502)
+
+- Push button - Omron [B3U3100P](https://uk.farnell.com/omron/b3u-3000p/tactile-switch-side-actuated-smd/dp/1333655)
+
 Programming
 ---
 
