@@ -27,12 +27,12 @@ void ucs_init(){
   P5SEL |= BIT0 + BIT1;                     // Select XT1
   UCSCTL6 |= XCAP_1;                        // Internal load cap
 
-  // Loop until XT1 & DCO stabilizes
-  do{
-    UCSCTL7 &= ~(XT1LFOFFG + DCOFFG);
-                                            // Clear LFXT1,DCO fault flags
-    SFRIFG1 &= ~OFIFG;                      // Clear fault flags
-  }while (SFRIFG1 & OFIFG);                 // Test oscillator fault flag
+  // Loop until XT1 & DCO stabilizes - This stops the watch starting up on my board but runs ok without it.
+  //do{
+  //  UCSCTL7 &= ~(XT1LFOFFG + DCOFFG);
+  //                                          // Clear LFXT1,DCO fault flags
+  //  SFRIFG1 &= ~OFIFG;                      // Clear fault flags
+  //}while (SFRIFG1 & OFIFG);                 // Test oscillator fault flag
 
   UCSCTL6 &= ~(XT1DRIVE_3);                 // Xtal is now stable, reduce drive
                                             // strength
