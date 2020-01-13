@@ -9,3 +9,6 @@ pcb/routed.sch
 *.hex
 .*.swp
 *.stl
+pcb/charliewatch/fp-info-cache
+pcb/fp-info-cache
+pcb/sym-lib-table
