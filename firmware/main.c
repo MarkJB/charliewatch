@@ -87,6 +87,7 @@ int main(void)
 extern void stopwatch_draw(void);
 extern void clockset_draw(void);
 extern void animation_draw(void);
+extern void lowpwr_draw(void);
 
 static void voltage_draw(void)
 {
@@ -127,11 +128,12 @@ static void voltage_draw(void)
 
 static void (*const modes[])(void) = {
 	//voltage_draw,
-	animation_draw,
-	stopwatch_draw,
-	clockset_draw,
-	clockset_draw,
-	voltage_draw,
+	animation_draw, //mode 0 display time
+	stopwatch_draw, //mode 1 stopwatch
+	clockset_draw, //mode 2a set hours
+	clockset_draw, //mode 2b minutes
+	voltage_draw,  //mode hr=3 battery level
+	lowpwr_draw,   //mode hr=4 leds off (short press to enable or will timeout)
 };
 
 static const unsigned mode_count = sizeof(modes) / sizeof(*modes);
