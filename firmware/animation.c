@@ -16,6 +16,9 @@ Animations are drawn:
 #include <stdlib.h>
 
 #include "led.h"
+#include "button.h"
+
+extern unsigned watch_mode;
 
 void delay(unsigned len)
 {
@@ -437,52 +440,80 @@ void animation_draw()
 	static int hour_dir;
 	static unsigned hour_bright = 0;
 
+#define DISPLAY_AUTO_OFF // Uncomment to enable auto off after 'on_time' seconds
 
-	if (animation_counter)
-	{
-		animation(animation_counter--);
-		return;
-	}
+#ifdef DISPLAY_AUTO_OFF
+	static unsigned int timeout;
+	static unsigned on_time = 60; // Default to 60 seconds on (short press to turn on for a further 60)
 
-	// we're not doing an animation, check for a second update
-	if (oldsec != RTCSEC)
-	{
-		oldsec = RTCSEC;
+    if (button_short)
+    {
+        timeout = 0;  // reset the timeout so leds are displayed
+    }
 
-		led_display[0] = RTCMIN;
-		led_display[1] = 60 + (RTCHOUR % 12);
-		led_display[2] = RTCSEC;
-
-		check_animation();
-	}
-
-	// make the hour "breath"
-	hour_bright += hour_dir;
-	if (hour_bright == 16*8)
-		hour_dir = -1;
-	else
-	if (hour_bright <= 8)
-		hour_dir = +1;
-
-	// set the default brightnesses for minute and second
-#define CONFIG_RED
-
-#ifdef CONFIG_PURPLE
-	led_bright[0] = 32;
-	led_bright[1] = (hour_bright / 4) + 1;
-	led_bright[2] = 4;
+    if (timeout > on_time * 1000)
+    {
+        led_off(); // If we've hit the timeout turn off the leds
+    }
+    else
+    {
+        timeout = timeout + 16; // Add 16ms to counter
 #endif
+        if (animation_counter)
+        {
+            animation(animation_counter--);
+            return;
+        }
 
-#ifdef CONFIG_ORANGE
-	led_bright[0] = 32;
-	led_bright[1] = (hour_bright / 4) + 1;
-	led_bright[2] = 1;
-#endif
-#ifdef CONFIG_RED
-	led_bright[0] = 16;
-	led_bright[1] = (hour_bright / 4) + 1;
-	led_bright[2] = 1;
-#endif
+        // we're not doing an animation, check for a second update
+        if (oldsec != RTCSEC)
+        {
+            oldsec = RTCSEC;
 
-	led_draw();
+            led_display[0] = RTCMIN;
+            led_display[1] = 60 + (RTCHOUR % 12);
+            led_display[2] = RTCSEC;
+
+            check_animation();
+        }
+
+        // make the hour "breath"
+        hour_bright += hour_dir;
+        if (hour_bright == 16*8)
+            hour_dir = -1;
+        else
+        if (hour_bright <= 8)
+            hour_dir = +1;
+
+        // set the default brightnesses for minute and second
+    #define CONFIG_BRIGHT_RED
+
+    #ifdef CONFIG_PURPLE
+        led_bright[0] = 32;
+        led_bright[1] = (hour_bright / 4) + 1;
+        led_bright[2] = 4;
+    #endif
+
+    #ifdef CONFIG_ORANGE
+        led_bright[0] = 32;
+        led_bright[1] = (hour_bright / 4) + 1;
+        led_bright[2] = 1;
+    #endif
+
+    #ifdef CONFIG_RED
+        led_bright[0] = 16;
+        led_bright[1] = (hour_bright / 4) + 1;
+        led_bright[2] = 1;
+    #endif
+
+    #ifdef CONFIG_BRIGHT_RED  // Should only be used with aggressive led pwr saving modes (e.g. auto off) or for debugging
+        led_bright[0] = 64;
+        led_bright[1] = (hour_bright / 2) + 1;
+        led_bright[2] = 8;
+    #endif
+
+        led_draw();
+#ifdef DISPLAY_AUTO_OFF
+    }
+#endif
 }

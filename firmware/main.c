@@ -130,10 +130,10 @@ static void (*const modes[])(void) = {
 	//voltage_draw,
 	animation_draw, //mode 0 display time
 	stopwatch_draw, //mode 1 stopwatch
-	clockset_draw, //mode 2a set hours
-	clockset_draw, //mode 2b minutes
-	voltage_draw,  //mode hr=3 battery level
-	lowpwr_draw,   //mode hr=4 leds off (short press to enable or will timeout)
+	clockset_draw, //mode 2 (2a) set hours
+	clockset_draw, //mode 3 (2b) minutes
+	voltage_draw,  //mode 4 hr=3 battery level
+	lowpwr_draw,   //mode 5 hr=4 leds off (short press to enable or will timeout)
 };
 
 static const unsigned mode_count = sizeof(modes) / sizeof(*modes);
