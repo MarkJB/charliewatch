@@ -9,6 +9,8 @@ controller of the CC430F6xxx in the GoodWatch.
 v0.2 works, although it has no radio parts.  It is exactly 1 square inch
 of PCB and should fit in a 38mm or 36mm case.
 
+See it in action: https://www.youtube.com/watch?v=VaebR-6KNXE
+
 [Charliewtch schematic](datasheets/charliewatch.pdf)
 
 Bill Of Materials (BOM)
